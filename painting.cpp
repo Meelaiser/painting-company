@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 	// start with some introduction messages
-	cout << "Welcome to Saqib's painting company.";	
+	cout << "Welcome to BEST painting company.";	
 
 	// prompts the user to enter the number of rooms
 	cout << "Enter the number of rooms: ";

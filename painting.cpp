@@ -1,5 +1,5 @@
 #include <iostram>
-// Use the ceil
+// Use the ceil function
 #include <cmath>
 
 using namespace std;
@@ -10,29 +10,35 @@ double getTotalSpace(int num);
 
 int main() {
 	// start with some introduction messages
-	cout << "Welcome to BEST painting company.";	
-	
+	cout << "Welcome to Saqib's painting company.";	
+
 	// the number of room
-	int numOfroom = getNumOfRoom();
+	int	numOfroom = getNumOfRoom();
 
 	// the total space
-	double totalSpace = getTotalSpace(numOfroom);
-	
+	double totalSpace =	getTotalSpace(numOfroom);
+
 	// displays the following choices of paint for user to choose
 	cout << "Brand" << \t << "Cost per 5 litres" << endl
 		 << "A    " << \t << "RM75" << endl
 		 << "B    " << \t << "RM100" << endl
 		 << "C    " << \t << "RM120" << endl
-	cout << endl << "The brand you choose is: ";
-	cin >> brand;
+	cout << endl << "The band you choose is: ";
+	cin >> band;
 
-	//input validation
-
-	/* functions */
+	// display 
+	// The number of litre of paint required
+	return 0;
+}
 	
+//input validation
+
+/*functions*/
+
 // get the number of room
 int getNumOfRoom() {
 	int num;
+// prompts the user to enter the number of rooms
 	cout << "Enter the number of the rooms: ";
 	cin num;
 	return num;
@@ -51,7 +57,7 @@ double getTotalSpace(int num) {
 
 	return totalSpace;
 }
-	
+
 // calculate the cost of the paint
 int getCost(int price, litre) {
 	int amount;
@@ -62,7 +68,6 @@ int getCost(int price, litre) {
 
 	return priceOf5 * amount;
 }
-
 
 // calculate the labour hours and labour charges
 int getCharges(int hour) {

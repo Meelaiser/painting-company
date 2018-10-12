@@ -4,14 +4,12 @@
 
 using namespace std;
 
+int getNumOfRoom();
+
 int main() {
 	// start with some introduction messages
 	cout << "Welcome to BEST painting company.";	
-
-	// prompts the user to enter the number of rooms
-	cout << "Enter the number of rooms: ";
-	cin >> num;
-
+	
 	// prompts the user to enter the square metre of wall space
 	cout << "enter the square metre of wall space: ";
 	cin >> square;

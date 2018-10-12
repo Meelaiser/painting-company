@@ -59,10 +59,29 @@ int main() {
 	}
 	
     // calculate the cost of the paint
-	int getCost(int price, litre
+	int getCost(int price, litre) {
+		int amount;
+		if (litre % 5 > 0)
+			amount = litre / 5 + 1;
+		else 
+			amount = litre / 5;
+
+		return priceOf5 * amount;
+	}
+
 
     // calculate the labour hours and labour charges
+	int getCharges(int hour) {
+		return hour * 60;	
+	}
+
     // display the breakdown of the cost and the total cost
+	void breakdown(int cost, int hour, int labor) {	
+		 cout << "The cost of the paint is " << cost << endl
+		 cout << "The hours of labor required is " << hour << endl
+		 cout << "The labor charges is " << labor << endl
+		 cout << "The total cost of the paint job is " << labor <<< endl
+	}
 
 
 	return 0;

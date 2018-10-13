@@ -35,7 +35,6 @@ int main() {
 	// display some information
 	breakdown(paint5L, painCost, labourCharge);
 
-	// The number of litre of paint required
 	return 0;
 }
 
@@ -125,6 +124,7 @@ int get5LPrice() {
 				price = 120;	
 				valid = 1;
 				break;
+
 			default:	
 				break;
 		}

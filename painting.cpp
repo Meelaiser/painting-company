@@ -107,7 +107,8 @@ int getLabourCharges(int square) {
 
 // display the breakdown of the cost and the total cost
 void breakdown(int paint, int labour) {	
-	 cout << "The cost of the paint is " << paint << endl
+	 cout << "The number of litre of paint required is " << paint / 5 << endl
+		  << "The cost of the paint is " << paint << endl
 	      << "The hours of labor required is " << labour / 60 << endl
 	      << "The labor charges is " << labour << endl
 	      << "The total cost of the paint job is " << paint + labour << endl;

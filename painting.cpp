@@ -1,41 +1,44 @@
 #include <iostream>
-// Use the ceil function
-//#include <cmath>
+
+// use the ceil function
+#include <cmath>
 
 using namespace std;
 
 // function headers
 int getNumOfRoom();
 int getTotalSpace(int);
-char choosePaint();
-int getPaintCost(char, int);
+int get5LPrice();
+int getPaintCost(int, int);
 int getLabourCharges(int);
-void breakdown(int, int);
+void breakdown(int, int, int);
 
 int main() {
 	// start with some introduction messages
-	cout << "Welcome to Saqib's painting company.\n";	
+	cout << "Welcome to Saqib's painting company!\n\n";	
 
 	// the number of room
-	int numOfroom = getNumOfRoom();
+	int numOfRoom = getNumOfRoom();
 
 	// the total space
-	int totalSpace = getTotalSpace(numOfroom);
+	int totalSpace = getTotalSpace(numOfRoom);
 
-	//char band;
-	char band = choosePaint();
+	// get the price for 5L of paint
+	int paint5L = get5LPrice();
 
-	int painCost = getPaintCost(band, totalSpace);
+	// the cost of the paint
+	int painCost = getPaintCost(paint5L, totalSpace);
+
+	// the labour charges 
 	int labourCharge = getLabourCharges(totalSpace);
 
-	// display 
-	breakdown(painCost, labourCharge);
+	// display some information
+	breakdown(paint5L, painCost, labourCharge);
 
 	// The number of litre of paint required
 	return 0;
 }
-	
-/*functions*/
+
 
 // get the number of room
 int getNumOfRoom() {
@@ -45,6 +48,7 @@ int getNumOfRoom() {
 	cout << "Please enter the number of the rooms: ";
 	cin >> num;
 
+	// input validation
 	while (num < 1) {
 		cout << "Please enter a positive integer for the number of the rooms: ";
 		cin >> num;
@@ -53,68 +57,35 @@ int getNumOfRoom() {
 	return num;
 }
 
+
 // get the wall space of each room and calculate the total wall space in square metre
 int getTotalSpace(int num) {
-	int total = 0;
+	double total = 0.0;
 
 	// prompts the user to enter the square metre of wall space
 	for (int a = 1; a <= num; a++) {
 		cout << "enter the square metre of wall space for room#" << a << ": ";
-		int square;
+		double square;
 		cin >> square;
+
+		// input validation
+		while (square < 1) {
+			cout << "Please enter a positive number for the number of the rooms: ";
+			cin >> square;
+		}
+
 		total += square;
 	}
+
+	// turn the total space into an integer
+	total = ceil(total);
 
 	return total;
 }
 
-// calculate the cost of the paint
-int getPaintCost(char band, int square) {
-	int price;
-	switch (band) {
-		case 'A':
-			price = 75; 	
-			break;
-		case 'B':
-		   	price = 100;	
-			break;
-		case 'C': 
-			price = 120;	
-			break;
-	}
-	
-	int amount;
-	if (square % 5 > 0)
-		amount = square / 5 + 1;
-	else 
-		amount = square / 5;
-	
-	return price * amount;
-}
 
-// calculate the labour hours and labour charges
-int getLabourCharges(int square) {
-	int charge = 60;
-	int hour;
-
-	if (square % 3 > 0)
-		hour = square / 3 + 1;
-	else 
-		hour = square / 3;
-
-	return charge * hour;
-}
-
-// display the breakdown of the cost and the total cost
-void breakdown(int paint, int labour) {	
-	 cout << "The number of litre of paint required is " << paint / 5 << endl
-		  << "The cost of the paint is " << paint << endl
-	      << "The hours of labor required is " << labour / 60 << endl
-	      << "The labor charges is " << labour << endl
-	      << "The total cost of the paint job is " << paint + labour << endl;
-}
-
-char choosePaint() {
+// get the brand of the paint and its price
+int get5LPrice() {
 	// displays the following choices of paint for user to choose
 	cout << "-----------------------------------------" << endl 
 		 << "|     Brand\t" << "|   Cost per 5 litres   |" << endl
@@ -132,33 +103,79 @@ char choosePaint() {
 	char brand;
 	cin >> brand;
 
-	// validate the chosen brand
+	// get the price
+	int price;
 	bool valid = 0;
-	while (valid == 0) {
+	while (!valid) {
 		switch (brand) {
 			case 'A':
 			case 'a':
-				brand = 'A';
+				price = 75; 	
+				valid = 1;
+				break;
+
 			case 'B':
 			case 'b':
-				brand = 'B';
+				price = 100;	
+				valid = 1;
+				break;
+
 			case 'C':
 			case 'c':
-				brand = 'C';
+				price = 120;	
 				valid = 1;
 				break;
 			default:	
 				break;
 		}
 
-		// ask to enter valid brand
+		// validate the chosen brand
 		if (valid == 0) {
-			cout << "Please Enter a brand in the table: ";
+			cout << "Please enter a brand in the table: ";
 			cin >> brand;
 		}
 	}
 
-	return brand;
+	return price;
 }
 
-//input validation
+
+// calculate the cost of the paint
+int getPaintCost(int price, int square) {
+	// calculate the unit of paint to buy
+	int unit;
+	if (square % 12 > 0)
+		unit = square / 12 + 1;
+	else 
+		unit = square / 12;
+	
+	// return the cost of the paint
+	return price * unit;
+}
+
+
+// calculate the labour hours and labour charges
+int getLabourCharges(int square) {
+	// the charge of labour is 60 for 1 hour
+	int charge = 60;
+
+	// calculate the labour hours
+	int hour;
+	if (square % 3 > 0)
+		hour = square / 3 + 1;
+	else 
+		hour = square / 3;
+
+	// return the cost of the paint
+	return charge * hour;
+}
+
+
+// display the breakdown of the cost and the total cost
+void breakdown(int paint5L, int paintCost, int labourCharges) {	
+	 cout << "The number of litre of paint required is " << 5 * (paintCost / paint5L) << " L."<< endl
+		  << "The cost of the paint is " << paintCost << " RM." << endl
+	      << "The hours of labor required is " << labourCharges / 60 << " h." << endl
+	      << "The labor charges is " << labourCharges << " RM." << endl
+	      << "The total cost of the paint job is " << paintCost + labourCharges << " RM." << endl;
+}

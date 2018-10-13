@@ -35,16 +35,21 @@ int main() {
 	return 0;
 }
 	
-//input validation
-
 /*functions*/
 
 // get the number of room
 int getNumOfRoom() {
 	int num;
-// prompts the user to enter the number of rooms
-	cout << "Enter the number of the rooms: ";
+
+	// prompts the user to enter the number of rooms
+	cout << "Please enter the number of the rooms: ";
 	cin >> num;
+
+	while (num < 1) {
+		cout << "Please enter a positive integer for the number of the rooms: ";
+		cin >> num;
+	}
+
 	return num;
 }
 
@@ -102,20 +107,57 @@ int getLabourCharges(int square) {
 
 // display the breakdown of the cost and the total cost
 void breakdown(int paint, int labour) {	
-	 cout << "The cost of the paint is " << paint + labour << endl
+	 cout << "The cost of the paint is " << paint << endl
 	      << "The hours of labor required is " << labour / 60 << endl
 	      << "The labor charges is " << labour << endl
-	      << "The total cost of the paint job is " << paint << endl;
+	      << "The total cost of the paint job is " << paint + labour << endl;
 }
 
 char choosePaint() {
 	// displays the following choices of paint for user to choose
-	cout << "Brand" << "\t" << "Cost per 5 litres" << endl
-		 << "A    " << "\t" << "RM75" << endl
-		 << "B    " << "\t" << "RM100" << endl
-		 << "C    " << "\t" << "RM120" << endl;
-	cout << endl << "The band you choose is: ";
-	char band;
-	cin >> band;
-	return band;
+	cout << "-----------------------------------------" << endl 
+		 << "|     Brand\t" << "|   Cost per 5 litres   |" << endl
+		 << "|\t\t"         << "|\t\t\t|"       << endl 
+		 << "-----------------------------------------" << endl 
+		 << "|       A  \t" << "|\tRM75  \t\t|" << endl
+		 << "-----------------------------------------" << endl 
+		 << "|       B  \t" << "|\tRM100 \t\t|" << endl
+		 << "-----------------------------------------" << endl 
+		 << "|       C  \t" << "|\tRM120 \t\t|" << endl
+	     << "-----------------------------------------" << endl; 
+
+	// ask to enter the brand
+	cout << endl << "The brand you choose is: ";
+	char brand;
+	cin >> brand;
+
+	// validate the chosen brand
+	bool valid = 0;
+	while (valid == 0) {
+		switch (brand) {
+			case 'A':
+			case 'a':
+				brand = 'A';
+			case 'B':
+			case 'b':
+				brand = 'B';
+			case 'C':
+			case 'c':
+				brand = 'C';
+				valid = 1;
+				break;
+			default:	
+				break;
+		}
+
+		// ask to enter valid brand
+		if (valid == 0) {
+			cout << "Please Enter a brand in the table: ";
+			cin >> brand;
+		}
+	}
+
+	return brand;
 }
+
+//input validation

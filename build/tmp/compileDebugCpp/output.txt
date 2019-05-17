@@ -1,0 +1,4 @@
+See file:///home/meelaiser/Public/test_cpp/build/tmp/compileDebugCpp/output.txt for all output for compileDebugCpp.
+compiling app.cpp successful.
+
+Finished compileDebugCpp, see full log file:///home/meelaiser/Public/test_cpp/build/tmp/compileDebugCpp/output.txt.

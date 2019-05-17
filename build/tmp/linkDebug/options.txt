@@ -1,0 +1,4 @@
+-o
+/home/meelaiser/Public/test_cpp/build/exe/main/debug/painting_company
+/home/meelaiser/Public/test_cpp/build/obj/main/debug/c0rn65lkroj8p4fvz0qgmzzjr/app.o
+-m64

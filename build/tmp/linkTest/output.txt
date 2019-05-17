@@ -1,0 +1,7 @@
+See file:///home/meelaiser/Public/test_cpp/build/tmp/linkTest/output.txt for all output for linkTest.
+linking painting_companyTest failed.
+/usr/bin/ld: /home/meelaiser/Public/test_cpp/build/obj/test/9yxcrtbw8l8n123chso4js8ln/app_test.o: in function `main':
+/home/meelaiser/Public/test_cpp/src/test/cpp/app_test.cpp:10: undefined reference to `painting_company::Greeter::greeting[abi:cxx11]()'
+collect2: error: ld returned 1 exit status
+
+Finished linkTest, see full log file:///home/meelaiser/Public/test_cpp/build/tmp/linkTest/output.txt.

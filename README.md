@@ -1,6 +1,5 @@
 # Painting company
-
-## This is a program to get price for painting
+This is a program to get price for painting.
 
 ## Output:
 Welcome to Saqib's painting company!
